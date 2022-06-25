@@ -18,14 +18,14 @@ class GatewayService:
         username=data['username']
         password=data['password']
         register=self.rpce.register(username,password)
-        return json.dumps({'result':register})
+        return Response(json.dumps(register),mimetype='application/json')
     
     @http('GET', '/login')
     def login(self, request):
         username=request.args.get('username')
         password=request.args.get('password')
         login=self.rpce.login(username,password)
-        return json.dumps({'result':login})
+        return Response(json.dumps(login),mimetype='application/json')
         
     @http('POST','/logout')
     def logout(self, request):
@@ -33,10 +33,10 @@ class GatewayService:
         if cookies:
             confirm = self.session_provider.delete_session(cookies['SESSID'])
             if (confirm):
-                result = Response('Logout Successful')
+                result = Response('LOGOUT SUCCESS')
                 result.delete_cookie('SESSID')
             else:
-                result = Response("Logout Failed")
+                result = Response("LOGOUT FAILED")
             return result
     
     @http("POST", "/upload")
@@ -56,9 +56,9 @@ class GatewayService:
                 file_upload = self.database.upload(filename, file)
                 return json.dumps(file_upload)
             else:
-                return Response("Login first")
+                return Response("LOGIN REQUIRED")
         else:
-            return Response("Login first")
+            return Response("LOGIN REQUIRED")
 
     @http("GET", "/<string:namafile>")
     def download(self, request,namafile):
@@ -68,6 +68,6 @@ class GatewayService:
             if (session_id):
                 return send_from_directory(os.getcwd()+"/files", namafile)
             else:
-                return Response("Login first")
+                return Response("LOGIN REQUIRED")
         else:
-            return Response("Login first")
+            return Response("LOGIN REQUIRED")
