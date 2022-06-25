@@ -24,6 +24,10 @@ How to use: </br>
 4. Run Docker with WSL terminal by using </br> 
    <code>docker-compose build</code> </br>
    <code>docker-compose up</code> </br>
+   Make sure on docker desktop everything is running </br>
+   <img src="https://user-images.githubusercontent.com/73834938/175778859-9a1accd8-e56a-44d0-9770-22a200e2e76c.png)"/>
+   </br>
+   **IF a service doesnt run**  - retry to build again by stopping and then running or just press play on the stopped service on the Container of Docker Desktop </br>
  <a/>
 Features: </br>
 Register </br>
