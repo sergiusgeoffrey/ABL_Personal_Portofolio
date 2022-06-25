@@ -11,7 +11,7 @@ Features: </br>
  </br>
 **Simple Cloud** </br>
 - Upload </br> 
-- Download /br>
+- Download </br>
 </br>
 ## Hard </br>
 ### Student Paper Storage  </br>
