@@ -1,0 +1,20 @@
+{% extends "basic.html" %}
+{% block title %}Upload File{% endblock %}
+{% block main %}
+{% if session.key %}
+<h1>Upload New Paper</h1>
+  <form method=post enctype=multipart/form-data style="display: inline-grid;">
+    <input type=file name=file required>
+    <label for="title">Title</label>
+    <input placeholder="Title" name="title" id="title"required>
+    </br>
+    <label for="abstract">Abstract</label>
+    <textarea name="abstract" id="abstract" placeholder="Abstract" row="40" cols="100" required></textarea>
+    </br>
+    <input type=submit value=Upload>
+  </form>
+{% else %}
+  <h2>YOU NEED TO LOGIN
+  </br><a href="{{ url_for('student_paper_storage.Login') }}">L O G I N</a>.</h2>
+{% endif %}
+{% endblock %} 

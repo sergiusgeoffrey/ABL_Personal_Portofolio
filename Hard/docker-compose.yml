@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=caching_sha2_password
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8080:80"
+      
+  redis:
+    container_name: redis
+    image: redis:5.0.5
+    hostname: redis
+    ports:
+      - '6379:6379'
+  
+  flask_app:
+    build: 
+      dockerfile: DockerFile
+      context: app
+    environment:
+      - REDIS_URL=redis
+      - REDIS_PORT=6379
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+      - db

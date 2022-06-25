@@ -1,0 +1,15 @@
+{% extends "basic.html" %}
+{% block title %}Main Menu{% endblock %}
+{% block main %}
+<h1>Main Menu</h1>
+   {% if session.key %}
+      <h3>Hello {{ session.name }} <a href="{{ url_for('student_paper_storage.Logout') }}">logout</a>.</h3>
+      <h3>ON THE URL</h3>
+      <h4>Add <b> /upload </b> to upload a paper</h4>
+      <h4>Add <b> /-PDF NAME- </b> to see paper details that was uploaded</h4>
+      <h4>Add <b> /download/-PDF NAME- </b> to download a paper that was uploaded</h4>
+   {% else %}
+      <h3>YOU NEED TO LOGIN
+      </br><a href="{{ url_for('student_paper_storage.Login') }}">L O G I N</a>.</h3>
+   {% endif %}
+{% endblock %}

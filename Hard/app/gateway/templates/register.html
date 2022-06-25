@@ -1,0 +1,21 @@
+{% extends "basic.html" %}
+{% block title %}Register Page{% endblock %}
+{% block main %}
+<h1>R E G I S T E R</h1>
+   <form action="{{ url_for('student_paper_storage.Register') }}" method="POST" style="display: inline-grid;">
+      <label for="id">ID</label>
+      <input placeholder="ex: c14190024" type="text" name="id" id="id" autocomplete="off" required>
+      </br>
+      <label for="Name">Your Name Here</label>
+      <input placeholder="ex: Sergius Geoffrey" type="text" name="name" id="Name" autocomplete="off" required>
+      </br>
+      <label for="Email">Your Email here</label>
+      <input placeholder="ex: dummy@gmail.com" type="text" name="email" id="Email" autocomplete="off" required>
+      </br>
+      <label for="Password">Your Password here</label>
+      <input placeholder="Password" type="password" name="password" id="Password" autocomplete="off" required>
+      </br>
+      <input type="submit" name="Register">
+   </form>
+   <h2><a href="{{ url_for('student_paper_storage.Login') }}">S I G N I N</a></h2>
+{% endblock %} 
