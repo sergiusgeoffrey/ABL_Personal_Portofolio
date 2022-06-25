@@ -8,11 +8,11 @@ Features: </br>
 **Simple Calculator** </br>
 - Prime num </br>
 - Palindrome Prime </br>
- </br>
+ <a/>
 **Simple Cloud** </br>
 - Upload </br> 
 - Download </br>
-</br>
+<a/>
 ## Hard </br>
 ### Student Paper Storage  </br>
 Using Docker + Flasks </br>
@@ -24,6 +24,7 @@ How to use: </br>
 4. Run Docker with WSL terminal by using
    <code>docker-compose build</code>
    <code>docker-compose up</code>
+<a/>
 Features: </br>
 - Register
 - Login
